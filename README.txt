@@ -10,7 +10,7 @@ example shown in
 		python3 server.py --clients 2 # 2 clients participating
 
 	clients side
-		import client as client
+		from client import client
 		obj=client()
 		..... After each iteration ....
 			  stop=obj.merge(model)
