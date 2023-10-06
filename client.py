@@ -1,19 +1,18 @@
-import torch
 import pickle
 import requests
 import json
 import time
-url = 'http://127.0.0.1:5000/upload'
-class MyModel(torch.nn.Module):
-    def __init__(self):
-        super(MyModel, self).__init__()
-        self.fc = torch.nn.Linear(3, 1)
 
-    def forward(self, x):
-        return self.fc(x)
+# class MyModel(torch.nn.Module):
+#     def __init__(self):
+#         super(MyModel, self).__init__()
+#         self.fc = torch.nn.Linear(3, 1)
 
-# Create an instance of the model
-model = MyModel()
+#     def forward(self, x):
+#         return self.fc(x)
+
+# # Create an instance of the model
+# model = MyModel()
 
 import pickle
 import requests
@@ -34,8 +33,7 @@ class client:
         # Print the state dictionary
         # print(model_state_dict)
         a=pickle.dumps((self.ids,model_state_dict))
-        #       a=model_state_dict
-        response = requests.post(url, data=a,headers = {'Content-Type': 'application/octet-stream'})
+        response = requests.post(url = 'http://127.0.0.1:5000/upload', data=a,headers = {'Content-Type': 'application/octet-stream'})
         # print(response.content)
         if response.status_code!=200:
             return False
